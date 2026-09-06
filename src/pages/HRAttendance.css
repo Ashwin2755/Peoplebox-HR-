@@ -1,0 +1,397 @@
+.hr-attendance-page {
+  min-height: 100vh;
+  padding: 35px;
+  background: #f5f7fb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hr-attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.hr-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #6366f1;
+}
+
+.hr-attendance-header h1 {
+  margin: 8px 0;
+  font-size: 32px;
+  color: #111827;
+}
+
+.hr-attendance-header p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.hr-refresh-button,
+.hr-back-button,
+.view-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.hr-refresh-button {
+  padding: 11px 17px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.hr-back-button {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  background: white;
+  color: #374151;
+}
+
+.selected-employee-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 22px;
+  margin-bottom: 25px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.selected-employee-card h2 {
+  margin: 0 0 5px;
+  color: #111827;
+}
+
+.selected-employee-card p {
+  margin: 0;
+  color: #6b7280;
+}
+
+.employee-avatar {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.employee-avatar.small {
+  width: 42px;
+  height: 42px;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.hr-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.hr-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.hr-summary-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.hr-summary-card strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 25px;
+  color: #111827;
+}
+
+.hr-summary-card.employees svg {
+  color: #4f46e5;
+}
+
+.hr-summary-card.present svg {
+  color: #16a34a;
+}
+
+.hr-summary-card.absent svg {
+  color: #dc2626;
+}
+
+.hr-summary-card.incomplete svg {
+  color: #d97706;
+}
+
+.hr-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.hr-search,
+.hr-date-filter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 11px;
+}
+
+.hr-search {
+  flex: 1;
+}
+
+.hr-search svg,
+.hr-date-filter svg {
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.hr-search input,
+.hr-date-filter input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+.hr-date-filter {
+  min-width: 210px;
+}
+
+.hr-date-filter button {
+  border: none;
+  background: transparent;
+  color: #6366f1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.hr-table-card {
+  padding: 25px;
+  margin-bottom: 25px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.hr-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.hr-section-header > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hr-section-header h2 {
+  margin: 0;
+  color: #111827;
+}
+
+.hr-section-header > span {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.hr-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.hr-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hr-table th,
+.hr-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eef0f4;
+  white-space: nowrap;
+}
+
+.hr-table th {
+  background: #f9fafb;
+  color: #6b7280;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hr-table td {
+  color: #374151;
+  font-size: 14px;
+}
+
+.employee-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.employee-info strong,
+.employee-info span {
+  display: block;
+}
+
+.employee-info strong {
+  color: #111827;
+}
+
+.employee-info span {
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.attendance-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.mini-present {
+  color: #15803d;
+}
+
+.mini-absent {
+  color: #b91c1c;
+}
+
+.view-button {
+  padding: 8px 14px;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.view-button:hover {
+  background: #e0e7ff;
+}
+
+.hr-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.hr-status.present {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.hr-status.absent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.hr-status.incomplete {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.hr-empty,
+.hr-loading {
+  padding: 50px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.hr-spin {
+  animation: hr-spin 1s linear infinite;
+}
+
+@keyframes hr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hr-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .hr-attendance-page {
+    padding: 20px;
+  }
+
+  .hr-attendance-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .hr-filters {
+    flex-direction: column;
+  }
+
+  .hr-date-filter {
+    width: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .hr-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .selected-employee-card {
+    align-items: flex-start;
+  }
+}
+
+/* RotaX design-system mapping for the standalone HR attendance view. */
+.hr-attendance-page { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-body); }
+.hr-attendance-header h1, .selected-employee-card h2, .hr-section-header h2 { font-family: var(--font-display); color: var(--color-ink); }
+.hr-label { color: var(--color-accent-dark); }
+.hr-attendance-header p, .selected-employee-card p, .hr-summary-card span, .hr-table td, .hr-section-header > span { color: var(--color-ink-soft); }
+.selected-employee-card, .hr-summary-card, .hr-table-card { border: 1px solid var(--color-border); background: var(--color-surface); box-shadow: var(--shadow-sm); }
+.hr-refresh-button, .hr-back-button { border-color: var(--color-border-strong); background: var(--color-surface); color: var(--color-ink); }
+.hr-refresh-button:hover, .hr-back-button:hover { background: var(--color-surface-alt); }
+.hr-search, .hr-date-filter { border-color: var(--color-border-strong); background: var(--color-surface); }
+.hr-search input, .hr-date-filter input { color: var(--color-ink); }
+.hr-table th { background: var(--color-surface-alt); color: var(--color-ink-soft); }
+.hr-table th, .hr-table td { border-color: var(--color-border); }
+.employee-avatar { background: var(--color-accent-tint); color: var(--color-accent-dark); }
+.hr-summary-card.employees svg { color: var(--color-accent-dark); }
+.hr-summary-card.present svg, .hr-status.present, .mini-present { color: var(--color-green); }
+.hr-summary-card.absent svg, .hr-status.absent, .mini-absent { color: var(--color-red); }
+.hr-summary-card.incomplete svg, .hr-status.incomplete { color: var(--color-amber); }
+.hr-status.present { background: var(--color-green-tint); }
+.hr-status.absent { background: var(--color-red-tint); }
+.hr-status.incomplete { background: var(--color-amber-tint); }
+.view-button { background: var(--color-accent-tint); color: var(--color-accent-dark); }
