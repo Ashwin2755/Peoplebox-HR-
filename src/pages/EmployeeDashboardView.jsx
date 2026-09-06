@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { CalendarDays, ClipboardList, Clock3, LogOut, Search, User, Wallet } from "lucide-react";
+import { ClipboardList, Clock3, LogOut, Search, User, Wallet } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/config";

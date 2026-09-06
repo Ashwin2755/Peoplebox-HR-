@@ -3,7 +3,6 @@ import { collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore"
 import { Bell, CalendarDays, Check, Clock3, Eye, Filter, LogOut, RefreshCw, Search, TrendingUp, UserCheck, UserX, Users, Wallet, X } from "lucide-react";
 import { signOut } from "firebase/auth";
 import { auth, db } from "../firebase/config";
-import { getEmployeeDisplayId } from "../utils/employeeDisplay";
 import "./AdminDashboard.css";
 
 const sections = [["Dashboard", TrendingUp], ["Employees", Users], ["Attendance", Clock3], ["Leave Requests", CalendarDays], ["Payroll", Wallet]];
@@ -52,8 +51,6 @@ function AdminDashboard() {
 
   const today = todayString();
   const todayAttendance = attendance.filter((item) => item.date === today);
-  const getEmployeeKey = (employee) => employee.employeeId || employee.uid || employee.id;
-  const getAttendance = (employee) => todayAttendance.find((record) => record.employeeId === getEmployeeKey(employee));
   const presentToday = todayAttendance.filter((item) => item.status === "Present" || item.checkIn).length;
   const absentToday = Math.max(employees.length - presentToday, 0);
   const onLeave = employees.filter((item) => item.status === "On Leave").length;
@@ -197,7 +194,6 @@ function EmployeeModal({ employee, departments, onSaveEmployee, onClose }) {
 
   return <div className="modal-overlay" onClick={onClose}><div className="employee-modal" onClick={(event) => event.stopPropagation()}><div className="modal-header"><h2>Edit Employee Details</h2><button className="modal-close" onClick={onClose}><X size={18} /></button></div><div className="modal-profile"><div className="large-avatar">{getInitials(form.name)}</div><div><h3>{form.name || "Employee"}</h3><p>{form.email || form.employeeId}</p></div></div><div className="employee-details editable-details"><label>Name<input name="name" value={form.name} onChange={updateField} required /></label><label>Email<input name="email" type="email" value={form.email} onChange={updateField} /></label><label>Department<select name="department" value={form.department} onChange={updateField} required><option value="">Select department</option>{departments.map((item) => <option key={item} value={item}>{item}</option>)}</select></label><label>Designation<input name="designation" value={form.designation} onChange={updateField} /></label><label>Joining Date<input name="joiningDate" type="date" value={form.joiningDate} onChange={updateField} /></label><label>Status<select name="status" value={form.status} onChange={updateField}><option>Active</option><option>On Leave</option><option>Inactive</option></select></label><label>Phone<input name="phone" value={form.phone} onChange={updateField} /></label><label>Employee ID<input name="employeeId" value={form.employeeId} onChange={updateField} /></label><div className="employee-save-area"><button className="department-save" onClick={saveEmployee} disabled={saving || !form.name || !form.department}>{saving ? "Saving..." : "Save Employee Details"}</button>{message && <small className={message.includes("successfully") ? "save-success" : "save-error"}>{message}</small>}</div></div></div></div>;
 }
-function Detail({ label, value }) { return <div><span>{label}</span><strong>{value || "Not specified"}</strong></div>; }
 function StatusBadge({ status }) { return <span className={`status-badge ${String(status).toLowerCase().replace(/\s+/g, "-")}`}>{status}</span>; }
 function getInitials(name = "") { return name.split(" ").filter(Boolean).slice(0, 2).map((word) => word[0]).join("").toUpperCase() || "U"; }
 function formatDate(value) { if (!value) return "-"; const date = new Date(`${value}`.includes("T") ? value : `${value}T00:00:00`); return Number.isNaN(date.getTime()) ? value : date.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }); }

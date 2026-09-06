@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import {
   CalendarDays,
@@ -68,7 +68,7 @@ function Leave() {
   // FETCH EMPLOYEE + LEAVE REQUESTS
   // ==========================================
 
-  const fetchLeaveRequests = async () => {
+  const fetchLeaveRequests = useCallback(async () => {
 
     if (!currentUser) {
       setLoading(false);
@@ -197,14 +197,17 @@ function Leave() {
       setLoading(false);
 
     }
-  };
+  }, [currentUser]);
 
 
   useEffect(() => {
+    const run = async () => {
+      await fetchLeaveRequests();
+    };
 
-    fetchLeaveRequests();
+    run();
 
-  }, [currentUser]);
+  }, [fetchLeaveRequests]);
 
 
   // ==========================================

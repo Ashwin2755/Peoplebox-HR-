@@ -2,8 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import {
   collection,
   getDocs,
-  query,
-  where,
 } from "firebase/firestore";
 import {
   Search,
@@ -105,7 +103,11 @@ function HRAttendance() {
   }
 
   useEffect(() => {
-    loadData();
+    const run = async () => {
+      await loadData();
+    };
+
+    run();
   }, []);
 
   const filteredEmployees = useMemo(() => {
